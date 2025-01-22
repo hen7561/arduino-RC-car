@@ -81,31 +81,19 @@ def read_from_arduino_and_send_to_client(client_socket):
 ```cpp
 // Example of obstacle detection
 void calc_dist() {
-  PORTD &= ~(1 << PD6);
-  delayMicroseconds(2);
-  PORTD |= (1 << PD6);
-  delayMicroseconds(5);
-  PORTD &= ~(1 << PD6);
+    digitalWrite(trigPin, LOW);
+    delayMicroseconds(2);
+    digitalWrite(trigPin, HIGH);
+    delayMicroseconds(5);
+    digitalWrite(trigPin, LOW);
 
-  duration = pulseIn(echoPin, HIGH);
-  cm = microsecondsToCentimeters(duration);
+    duration = pulseIn(echoPin, HIGH);
+    cm = duration / 29 / 2;
 
-  if (cm < 30) {
-    stop_alert();
-  }
-  else if (cm < 60 && is_forward) {
-    yellow();
-  }
-  else if (is_forward) {
-    green();
-  }
-  else {
-    leds_off();
-  }
-
-  last_cm = cm;
+    if (cm < 30) {
+        stop_alert();
+    }
 }
-
 ```
 ---
 
@@ -173,7 +161,6 @@ void calc_dist() {
 | A0 (14)     | PC0          | SERVO_PIN           |
 
 ---
-
 ## Future Enhancements
 - Add WiFi-based communication.
 - Include additional sensors for environment mapping.
