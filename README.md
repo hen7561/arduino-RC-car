@@ -162,16 +162,6 @@ void calc_dist() {
 
 ---
 
-## Project Images
-
-### **Pin Configuration Table:**
-![Pin Configuration](file-X9e6TN6trtdUvQsK17SJg5)
-
-### **RC Car Prototype:**
-![Robot Prototype](file-6vMLvwvPWmubviN5pr2nzw)
-
----
-
 ## Future Enhancements
 - Add WiFi-based communication.
 - Include additional sensors for environment mapping.
